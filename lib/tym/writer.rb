@@ -36,7 +36,7 @@ module Tym
         self.font = DEFAULT_FONT
         self.fill = 'white'
         self.gravity = Magick::NorthWestGravity
-        self.pointsize = @pointsize
+        self.pointsize = 8
       end
 
       @text.each do |line|
