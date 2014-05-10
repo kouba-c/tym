@@ -31,7 +31,6 @@ module Tym
     def write
       @pointsize = 8
       @y = 0
-
       @draw = Magick::Draw.new do 
         self.font = DEFAULT_FONT
         self.fill = 'white'
@@ -63,6 +62,8 @@ module Tym
         @draw.pointsize = @pointsize = $1.to_i
       when /^POSITION_Y=(\d*)$/
         @y = $1.to_i
+      when /^COLOR=(\d*)$/
+        @draw.color = $1.downcase
       when /^ALIGN=(.*)$/
           @draw.gravity = {"CENTER" => Magick::NorthGravity,
                            "RIGHT"  => Magick::NorthWestGravity,
