@@ -7,5 +7,6 @@ describe Tym do
 
   it 'can execute with valid option' do
     Tym::Writer.execute("./spec/img/before.png", "./spec/txt/one_line_center.tym")
+    FileUtils::compare_file("./spec/img/before_tym.png", "./spec/img/after.png").should == true
   end
 end
