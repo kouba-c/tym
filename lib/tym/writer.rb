@@ -42,7 +42,7 @@ module Tym
       @text.each do |line|
         case line.chomp
         when /\A#(.*)\z/
-          command_parse($1)
+          command_parse $1
         when /\A([A-z0-9!,. ]+)\z/
           @draw.annotate(@image,0,0,0,@y,$1)
           @y += @pointsize * 2
@@ -64,15 +64,9 @@ module Tym
       when /^POSITION_Y=(\d*)$/
         @y = $1.to_i
       when /^ALIGN=(.*)$/
-        align = $1
-        case align
-        when "CENTER"
-          @draw.gravity = Magick::NorthGravity
-        when "RIGHT"
-          @draw.gravity = Magick::NorthWestGravity
-        else
-          raise "Find Invalid Parameter. Align = #{$1}"
-        end
+          @draw.gravity = {"CENTER" => Magick::NorthGravity,
+                           "RIGHT"  => Magick::NorthWestGravity,
+                           "LEFT"   => Magick::NorthEastGravity}.fetch $1
       else
         #This line is Comment
       end
