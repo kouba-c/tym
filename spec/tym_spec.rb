@@ -5,7 +5,7 @@ describe Tym do
     expect(Tym::VERSION).not_to be nil
   end
 
-  describe Tym::Writer do
+  describe "Tym::execute" do
     let(:img_path) { "./spec/img/" }
     let(:txt_path) { "./spec/txt/" }
 
@@ -15,7 +15,7 @@ describe Tym do
       output_img = img_path + "before_tym.png"
       validate_img = img_path + "default_output.png"
 
-      Tym::Writer.execute(input_img, input_txt) 
+      Tym::execute(input_img, input_txt) 
       FileUtils::compare_file(output_img, validate_img).should == true
     end
 
