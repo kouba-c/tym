@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
 require 'tym'
-Tym::Writer.execute(ARGV)
+Tym::Cli.run(ARGV)
