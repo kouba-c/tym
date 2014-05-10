@@ -11,9 +11,9 @@ describe Tym do
 
     it 'can execute with valid option' do
       input_img = img_path + "before.png"
-      input_txt = txt_path + "one_line_center.tym"
+      input_txt = txt_path + "default.tym"
       output_img = img_path + "before_tym.png"
-      validate_img = img_path + "after.png"
+      validate_img = img_path + "default_output.png"
 
       Tym::Writer.execute(input_img, input_txt) 
       FileUtils::compare_file(output_img, validate_img).should == true
