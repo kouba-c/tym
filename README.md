@@ -1,29 +1,42 @@
 # Tym
-
-TODO: Write a gem description
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'tym'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install tym
+Write text to a image.
 
 ## Usage
+Install font file.
+[emulogic.ttf](http://www.fontspace.com/freaky-fonts/emulogic)
 
-TODO: Write usage instructions here
+```
+# bundle exec ruby bin/tym base.png text.tym
+```
 
-## Contributing
+### base.png
+![before](https://raw.githubusercontent.com/wiki/kouba-c/tym/img/base.png)
 
-1. Fork it ( https://github.com/[my-github-username]/tym/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+### text.tym
+```
+#FONTPATH=~/Library/Fonts/emulogic.ttf
+#FONTSIZE=8
+#COLOR=WHITE
+#ALIGN=RIGHT
+#POSITION_X=24
+#POSITION_Y=6
+MARIO          WORLD  TIME
+123456    99    8-4    231
+#ALIGN=CENTER
+#POSITION_X=0
+#POSITION_Y=64
+THANK YOU MARIO!
+
+
+YOUR QUEST IS OVER.
+
+WE PRESENT YOU A NEW QUEST.
+
+
+PUSH BUTTON B
+
+TO SELECT A WORLD
+```
+
+### base_tym.png(output img)
+![after](https://raw.githubusercontent.com/wiki/kouba-c/tym/img/base_tym.png)
