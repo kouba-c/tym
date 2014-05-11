@@ -1,6 +1,8 @@
 require "rmagick"
 
 module Tym
+  class TymParserException < StandardError; end
+
   class Parser
     def initialize(drawer, text)
       @drawer = drawer
@@ -17,7 +19,7 @@ module Tym
         when /\A\z/
           @drawer.line_enter
         else
-          raise "Find Invalid text: #{line}"
+          raise TymParserException, "Find Invalid text: #{line}"
         end
       end
     end
@@ -25,22 +27,22 @@ module Tym
     #command = #XXX=YYY
     def command_parse(str)
       case str
-      when /^FONTPATH=(.*)$/
+      when /^FONTPATH=(.+)$/
         @drawer.font = File::expand_path($1)
-      when /^FONTSIZE=(\d*)$/
+      when /^FONTSIZE=(\d+)$/
         @drawer.pointsize = $1.to_i
-      when /^POSITION_X=(\d*)$/
+      when /^POSITION_X=(-?\d+)$/
         @drawer.x = $1.to_i
-      when /^POSITION_Y=(\d*)$/
+      when /^POSITION_Y=(-?\d+)$/
         @drawer.y = $1.to_i
-      when /^COLOR=([A-Za-z]*)$/
+      when /^COLOR=([A-Za-z]+)$/
         @drawer.fill = $1.downcase
-      when /^ALIGN=(.*)$/
+      when /^ALIGN=(.+)$/
           @drawer.gravity = {"CENTER" => Magick::NorthGravity,
                              "RIGHT"  => Magick::NorthWestGravity,
-                             "LEFT"   => Magick::NorthEastGravity}.fetch $1
+                             "LEFT"   => Magick::NorthEastGravity}[$1]
       else
-        #This line is Comment
+        #This line is comment
       end
     end
   end
