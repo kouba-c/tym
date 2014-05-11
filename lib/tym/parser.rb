@@ -14,7 +14,7 @@ module Tym
         case line.chomp
         when /\A#(.*)\z/
           command_parse $1
-        when /\A([A-z0-9!,. ]+)\z/
+        when /\A([A-z0-9!,.\- ]+)\z/
           @drawer.draw_text($1)
         when /\A\z/
           @drawer.line_enter

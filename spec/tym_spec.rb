@@ -50,7 +50,7 @@ describe Tym do
 
     describe 'parse text' do
       it '::normal text' do
-        text = "NORMAL string. 0123456789!"
+        text = "NORMAL, string. 012345-6789!"
         Tym::Parser.new(drawer_mock, text.each_line).parse
         (drawer_mock.drawed_texts.join('\n') == text.chomp).should == true
       end
