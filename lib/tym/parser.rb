@@ -29,6 +29,8 @@ module Tym
         @drawer.font = File::expand_path($1)
       when /^FONTSIZE=(\d*)$/
         @drawer.pointsize = $1.to_i
+      when /^POSITION_X=(\d*)$/
+        @drawer.x = $1.to_i
       when /^POSITION_Y=(\d*)$/
         @drawer.y = $1.to_i
       when /^COLOR=([A-Za-z]*)$/

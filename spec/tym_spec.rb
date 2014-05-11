@@ -29,6 +29,16 @@ describe Tym do
       FileUtils::compare_file(output_img, validate_img).should == true
     end
 
+    it 'can execute with x position option' do
+      input_img = img_path + "before.png"
+      input_txt = txt_path + "x_position.tym"
+      output_img = img_path + "before_tym.png"
+      validate_img = img_path + "x_position_output.png"
+
+      Tym::execute(input_img, input_txt) 
+      FileUtils::compare_file(output_img, validate_img).should == true
+    end
+
     after do
       FileUtils::rm(Dir.glob(img_path + "*_tym.png"))
     end

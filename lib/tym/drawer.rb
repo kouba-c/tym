@@ -2,11 +2,12 @@ require "rmagick"
 
 module Tym
   class Drawer
-    attr_accessor :y
+    attr_accessor :x, :y
     DEFAULT_FONT = ""
 
     def initialize(image)
       @image = image
+      @x = 0
       @y = 0
       @pointsize = 8
       @draw = Magick::Draw.new do 
@@ -18,7 +19,7 @@ module Tym
     end
 
     def draw_text(text)
-      @draw.annotate(@image,0,0,0,@y,text)
+      @draw.annotate(@image,0,0,@x ,@y,text)
       @y += @pointsize * 2
     end
 
