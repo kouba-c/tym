@@ -26,13 +26,13 @@ module Tym
     def command_parse(str)
       case str
       when /^FONTPATH=(.*)$/
-        @drawer.font = $1
+        @drawer.font = File::expand_path($1)
       when /^FONTSIZE=(\d*)$/
         @drawer.pointsize = $1.to_i
       when /^POSITION_Y=(\d*)$/
         @drawer.y = $1.to_i
-      when /^COLOR=(\d*)$/
-        @drawer.color = $1.downcase
+      when /^COLOR=([A-Za-z]*)$/
+        @drawer.fill = $1.downcase
       when /^ALIGN=(.*)$/
           @drawer.gravity = {"CENTER" => Magick::NorthGravity,
                              "RIGHT"  => Magick::NorthWestGravity,

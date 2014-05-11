@@ -32,7 +32,7 @@ module Tym
     end
 
     #delegate member setter to Magick::Draw obj
-    [:font, :fill, :gravity, :gravity].each do |m|
+    [:font, :fill, :gravity].each do |m|
       define_method "#{m}=" do |arg|
         self.instance_eval "@draw.#{m} = arg" 
       end

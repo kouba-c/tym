@@ -9,11 +9,21 @@ describe Tym do
     let(:img_path) { "./spec/img/" }
     let(:txt_path) { "./spec/txt/" }
 
-    it 'can execute with valid option' do
+    it 'can execute with default option' do
       input_img = img_path + "before.png"
       input_txt = txt_path + "default.tym"
       output_img = img_path + "before_tym.png"
       validate_img = img_path + "default_output.png"
+
+      Tym::execute(input_img, input_txt) 
+      FileUtils::compare_file(output_img, validate_img).should == true
+    end
+
+    it 'can execute with multi align and multi color option' do
+      input_img = img_path + "before.png"
+      input_txt = txt_path + "multialign_multicolor.tym"
+      output_img = img_path + "before_tym.png"
+      validate_img = img_path + "multialign_multicolor_output.png"
 
       Tym::execute(input_img, input_txt) 
       FileUtils::compare_file(output_img, validate_img).should == true
