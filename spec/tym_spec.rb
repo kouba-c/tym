@@ -48,27 +48,29 @@ describe Tym do
   describe "Tym::Parser" do
     let(:drawer_mock) { Tym::DrawerMock.new }
 
-    it 'parse normal text' do
-      text = "NORMAL string. 0123456789!"
-      Tym::Parser.new(drawer_mock, text.each_line).parse
-      (drawer_mock.drawed_texts.join('\n') == text.chomp).should == true
-    end
+    describe 'parse text' do
+      it '::normal text' do
+        text = "NORMAL string. 0123456789!"
+        Tym::Parser.new(drawer_mock, text.each_line).parse
+        (drawer_mock.drawed_texts.join('\n') == text.chomp).should == true
+      end
 
-    it 'parse line enter' do
-      text = "" 
-      Tym::Parser.new(drawer_mock, text.each_line).parse
-      (drawer_mock.drawed_texts.join('\n') == "").should == true
-    end
+      it '::line enter' do
+        text = "" 
+        Tym::Parser.new(drawer_mock, text.each_line).parse
+        (drawer_mock.drawed_texts.join('\n') == "").should == true
+      end
 
-    it 'parse comment' do
-      text = <<-EOS
+      it '::comment' do
+        text = <<-EOS
 #this is comment
 #
 #COLOR=
 #ALIGN
-      EOS
-      Tym::Parser.new(drawer_mock, text.each_line).parse
-      (drawer_mock.drawed_texts == []).should == true
+        EOS
+        Tym::Parser.new(drawer_mock, text.each_line).parse
+        (drawer_mock.drawed_texts == []).should == true
+      end
     end
 
     describe 'parse option' do
