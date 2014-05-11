@@ -20,7 +20,7 @@ module Tym
 
     def draw_text(text)
       @draw.annotate(@image,0,0,@x ,@y,text)
-      @y += @pointsize * 2
+      @y += @pointsize 
     end
 
     def line_enter
